@@ -1,9 +1,17 @@
+
+
 <%= form_for @photo do |form| %>
     <%= render partial: '/photos/form', object: form %>
 
-    <div class="submit-field">
-      <%= form.submit "Upload", class: "btn btn-default btn-primary" %>
-    </div>
+<% end %>
+
+<% if @uploaded_photo.present? %>
+
+  <div class="col-md-3">
+
+    <%= image_tag @uploaded_photo.image.url %>
+    
+</div>
 
 <% end %>
 

@@ -1,8 +1,13 @@
 <div class="form-group has-feedback" style="margin: 2em; width: 300px;">
 
 <div class="file-field">
-  <%= form.label :photo, "Upload a photo" %>
-  <%= form.file_field :photo %>
+  <%= form.label :image, "Upload a photo" %>
+  <%= form.file_field :image %>
 </div>
+
+    <div class="submit-field">
+      <%= form.submit "Upload", class: "btn btn-default btn-primary" %>
+    </div>
+
 
 </div>

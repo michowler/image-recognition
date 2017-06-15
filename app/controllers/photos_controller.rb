@@ -7,7 +7,6 @@ class PhotosController < ApplicationController
   def create 
     @photo = Photo.new(photo_params)
    
-
     if @photo.save
        flash[:success] = "You uploaded your photo!"
        redirect_to :root
@@ -35,7 +34,7 @@ class PhotosController < ApplicationController
 
   private
   def photo_params
-  	params.require(:photo).permit(:photo_url) 
+  	params.require(:photo).permit(:image) 
   end 
 
 
