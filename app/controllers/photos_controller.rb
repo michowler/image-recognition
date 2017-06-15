@@ -9,33 +9,38 @@ class PhotosController < ApplicationController
    
     if @photo.save
        flash[:success] = "You uploaded your photo!"
-       redirect_to :root
+       redirect_to @photo
     else
       flash[:error] = "Something's wrong. Please try again."
       render 'page/index'
     end
   end
 
+  def show
+    # @photo = Photo.new
+    @photo = Photo.find(params[:id])
+  end 
 
-  def detect  
+  def detect 
+    @photo = Photo.find(params[:photo_id])
   	rekog = Aws::Rekognition::Client.new(region: "us-west-2")
-
     result = rekog.detect_labels({
       image: {
         s3_object: {
         bucket: "jasmine-rekog",
-        name: "maru.jpg"
+        name: "uploads/photo/image/#{params[:photo_id]}/#{@photo.image_identifier}"
         },
       }
     })
-    #byebug
-    redirect_to :root
+    @photo.description = result.labels 
+    @photo.save
+    redirect_to @photo
   end 
 
   private
   def photo_params
-  	params.require(:photo).permit(:image) 
+  	params.require(:photo).permit(:image, description: []) 
   end 
-
+  
 
 end
