@@ -1,0 +1,14 @@
+<%= form_for @photo do |form| %>
+    <%= render partial: '/photos/form', object: form %>
+
+    <div class="submit-field">
+      <%= form.submit "Upload", class: "btn btn-default btn-primary" %>
+    </div>
+
+<% end %>
+
+<%= form_tag photos_detect_path, method: :post do %>
+  <%= submit_tag 'Analyze image' %>
+<% end %>
+
+
