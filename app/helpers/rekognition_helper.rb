@@ -1,0 +1,2 @@
+module RekognitionHelper
+end
