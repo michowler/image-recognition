@@ -1,24 +1,56 @@
-
-
-<div class= "row">
-  <div class="col-md-3">
-<% if @photo.present? %>
-
-    <%= image_tag @photo.image.url %>
+<div class="row">
+  <div class="col-md-6">
+	  <% if @photo.present? %>
+      <%= image_tag @photo.image.url %>
     <% end %>
 </div>
 
 
+
+<div class="col-md-6">
+  <% if @photo.description.present? %>
+    <div id="content-1" class="pmd-card pmd-card-default pmd-z-depth pmd-card-custom-form pmd-scrollbar mCustomScrollbar" style="max-height: 600px">
+	    <% @photo.description.each do |label| %>
+      <div class="pmd-card-body">
+        <!-- <p><%= label["name"] %> <%= label["confidence"].to_i %>%</p> -->
+          <div class="progress">
+            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= label["confidence"].to_i %>" aria-valuemin="0" aria-valuemax="100">
+               <span class="label"><%= label["name"] %></span>
+               <span class="val"><%= label["confidence"].to_i %>%</span>
+            </div>
+          </div>
+
+      <script type="text/javascript">
+        $(document).ready(function() {
+          $('.progress-bar').css("width",
+            function() {
+              return $(this).attr("aria-valuenow") + "%"
+            });
+        });
+      </script>
+
+     </div>
+    <% end %>
+
+  <% else %>
+	<%= form_tag photos_detect_path, method: :post do %>
+	  <%= hidden_field_tag :photo_id, params[:id] %>
+  	  <%= submit_tag 'Analyze image', class: "btn pmd-btn-raised pmd-ripple-effect btn-success"%>
+  	<% end %>
+
+  <% end %>
+</div>
 </div>
 
-<% if @photo.description.present? %>
-	<% @photo.description.each do |label| %>
-		<p><%= label["name"] %>, <%= label["confidence"].to_i %>%</p>
-	<% end %>
-<% else %>
-<%= form_tag photos_detect_path, method: :post do %>
-<%= hidden_field_tag :photo_id, params[:id] %>
-  <%= submit_tag 'Analyze image' %>
-<% end %>
+<script type="text/javascript">
+  (function($){
+    $(window).load(function(){
+      $(".pmd-card").mCustomScrollbar({
+        theme:"minimal",
+        scrollInertia:2000
+      });
+    });
+  })(jQuery);
 
-<% end %>
+</script>
+

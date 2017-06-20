@@ -79,6 +79,8 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
+    dropzonejs-rails (0.8.0)
+      rails (> 3.1)
     erubi (1.6.0)
     excon (0.56.0)
     execjs (2.7.0)
@@ -357,6 +359,7 @@ DEPENDENCIES
   capybara (~> 2.13)
   carrierwave (~> 1.0)
   coffee-rails (~> 4.2)
+  dropzonejs-rails (~> 0.8.0)
   figaro
   fog
   jbuilder (~> 2.5)

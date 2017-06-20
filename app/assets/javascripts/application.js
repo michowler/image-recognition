@@ -18,3 +18,6 @@
 //= require turbolinks
 //= require propeller.min
 //= require_tree .
+//= require jquery-ui
+//= require dropzone
+//= require jquery.mCustomScrollbar
