@@ -23,16 +23,29 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  # process scale: [200, 300]
+  #process scale: [1184, 666]
+  # process :process_original_version
   #
-  # def scale(width, height)
-  #   # do something
-  # end
+  process resize_and_pad: [640, 480, background = :transparent, gravity = 'Center']
+  # process :resize_to_limit => [640, 480] 
+  def scale(width, height)
+    # do something
+  end
 
   # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process resize_to_fit: [50, 50]
+  version :thumb do
+    process resize_to_limit: [640, 480]
+  end
+ 
+  # def process_original_version
+  #   image = ::MiniMagick::Image::read(File.binread(@file.file))
+  #     if image[:width] > image[:height]
+  #       resize_to_fill 450, 300
+  #     else
+  #       resize_to_fill 300, 450
+  #     end
   # end
+
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

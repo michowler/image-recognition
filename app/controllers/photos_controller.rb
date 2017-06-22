@@ -1,4 +1,9 @@
 class PhotosController < ApplicationController
+  def index 
+    @photo = Photo.new
+  end
+
+
   def new
     @photo = Photo.new  #initialize an empty object for the form, so that we can fill in with details using the form.
     render template: "photos/new"
@@ -6,20 +11,40 @@ class PhotosController < ApplicationController
 
   def create 
     @photo = Photo.new(photo_params)
-   
     if @photo.save
-       flash[:success] = "You uploaded your photo!"
-       redirect_to @photo
+      respond_to do |format|
+        format.json{ render :json => @photo, :only => [:id] }
+        format.html
+        format.js
+      end
+      @uploaded_photo = Photo.find(@photo.id)
+       # flash[:success] = "You uploaded your photo!"
+       # redirect_to @photo
     else
-      flash[:error] = "Something's wrong. Please try again."
-      render 'page/index'
+      respond_to do |format|
+        format.json { render json: { error: 'Failed to process' } }
+      end
+      # flash[:error] = "Something's wrong. Please try again."
+      # render 'page/index'
     end
   end
+
 
   def show
     # @photo = Photo.new
     @photo = Photo.find(params[:id])
   end 
+
+  def edit
+    @photo = Photo.find(params[:id])
+  end
+
+  def update
+    @photo = Photo.find(params[:id])
+    @photo.update(photo_params)
+    redirect_to @photo
+  end
+
 
   def detect 
     @photo = Photo.find(params[:photo_id])
@@ -41,6 +66,6 @@ class PhotosController < ApplicationController
   def photo_params
   	params.require(:photo).permit(:image, description: []) 
   end 
-  
+
 
 end
