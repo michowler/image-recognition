@@ -40,3 +40,66 @@ $(function() {
 
 </script>
 
+<!--<%= form_for @photo, remote: true, html: { class: "dropzone", id: "photo-dropzone" }  do |form| %> -->
+
+<!-- <div class="col-sm-12"> -->
+
+<!--  <div class="fallback">
+  <%= form.label :image, "Upload a photo" %>
+  <%= form.file_field :image %>
+</div>
+ -->
+
+<!-- </div>
+
+
+<% end %>
+
+
+
+
+<!-- <script type="text/javascript">
+$(function() {
+  var photoDropzone = new Dropzone("#photo-dropzone");
+  return photoDropzone.on("success", function(file, responseText) {
+    // debugger;
+    // $(".dropzone").hide();
+    // $.ajax({
+    //   url: "http://localhost:3000/photos/" + responseText.id,
+    //   data: $(this).serialize(),
+
+    //   success: function(data) {  
+    //   debugger;    
+    //     $("#jumbo").append(data.image);   
+    //     },   
+    // });
+
+    // $("#jumbo").append("YOLO");
+    var imageUrl;
+    imageUrl = responseText.image;
+    var imageID = responseText.id;
+
+
+        // window.location.href = ("/photos/"+responseText.id);
+
+
+  });
+});
+
+  Dropzone.autoDiscover = false;
+
+  Dropzone.options.photoDropzone = {
+    paramName: 'photo[image]',
+    parallelUploads: 10,
+    acceptedFiles: '.jpeg,.jpg,.png',
+    maxFiles: 1,      
+    maxFilesize: 256,
+    dictDefaultMessage: "Try dragging an image here, or click to upload.",
+    addRemoveLinks: false
+  };
+
+
+
+
+</script>
+ -->

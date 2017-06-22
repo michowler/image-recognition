@@ -1,6 +1,11 @@
 class PhotosController < ApplicationController
+  # after_action :detect, only: [:create]
   def index 
     @photo = Photo.new
+    #@photos = Photo.all
+    # if params[:rid]
+    #   @uploaded_photo = Photo.find(params[:rid])
+    # end
   end
 
 
@@ -12,12 +17,14 @@ class PhotosController < ApplicationController
   def create 
     @photo = Photo.new(photo_params)
     if @photo.save
+      # render :json => @photo
+        # respond_to do |format|
+        # format.html
+        # format.json { render :json => @photo}
       respond_to do |format|
-        format.json{ render :json => @photo, :only => [:id] }
-        format.html
         format.js
+        format.html
       end
-      @uploaded_photo = Photo.find(@photo.id)
        # flash[:success] = "You uploaded your photo!"
        # redirect_to @photo
     else
@@ -59,7 +66,17 @@ class PhotosController < ApplicationController
     })
     @photo.description = result.labels 
     @photo.save
-    redirect_to @photo
+    #if @photo.save
+    #   respond_to do |format|
+    #     format.js
+    #     format.html
+    #   end
+    # else
+    #   respond_to do |format|
+    #     format.json { render json: { error: 'Failed to process' } }
+    #   end
+    # end
+    # redirect_to @photo
   end 
 
   private
