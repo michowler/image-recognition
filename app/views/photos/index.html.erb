@@ -1,60 +1,21 @@
 <div class="container-fluid">
-<div class="row">
-<div class="jumbotron text-right">
-  <h1>Imageria</h1>
-  <p>Imageria is a simple web app made to demonstrate the image detection and recognition capabilities by machine learning APIs.</p>
-</div>
-</div>
-</div>
-
-
-<!-- <h2>Upload a photo!</h2> -->
-<%= form_for @photo, html: { class: "dropzone", id: "photo-dropzone" }  do |form| %>
-
-<div class="col-sm-12">
-
- <div class="fallback">
-  <%= form.label :image, "Upload a photo" %>
-  <%= form.file_field :image %>
+  <div class="row">
+    <div class="jumbotron text-right" id="jumbo">
+      <h1>Imageria</h1>
+        <p>Imageria is a simple web app made to demonstrate the image detection and recognition capabilities by machine learning APIs.</p>
+    </div>
+  </div>
 </div>
 
-
-</div>
-
-
+<%= form_for @photo, remote: true do |form| %>
+  <%= render partial: '/photos/form', object: form %>
 <% end %>
 
-<!--       <% if @uploaded_photo.present? %>
-        <%= image_tag @uploaded_photo.image.url %>
-      <% end %> -->
+<div id="images-list">
+</div>
 
 
-<script type="text/javascript">
-$(function() {
-
-  var photoDropzone = new Dropzone("#photo-dropzone");
-  return photoDropzone.on("success", function(file, responseText) {
-    var imageUrl;
-    imageUrl = responseText.image.url;
-    imageID = responseText.id;
-    window.location.href = ("/photos/"+responseText.id);
 
 
-  });
-});
 
-  Dropzone.autoDiscover = false;
-
-  Dropzone.options.photoDropzone = {
-  	paramName: 'photo[image]',
-    parallelUploads: 10,
-    acceptedFiles: '.jpeg,.jpg,.png',
-    maxFiles: 1,      
-    maxFilesize: 256,
-    dictDefaultMessage: "Try dragging an image here, or click to upload.",
-    addRemoveLinks: false
-  };
-
-
-</script>
 
