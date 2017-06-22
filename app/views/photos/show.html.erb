@@ -1,8 +1,13 @@
+<div class="container" style="padding-top: 38px">
 <div class="row">
   <div class="col-md-6">
-	  <% if @photo.present? %>
-      <%= image_tag @photo.image.url %>
-    <% end %>
+   <div class="pmd-card pmd-card-default pmd-z-depth">
+    <div class="pmd-card-media">
+	    <% if @photo.present? %>
+        <%= image_tag @photo.image.url %>
+      <% end %>
+    </div>
+    </div>
 </div>
 
 
@@ -10,6 +15,8 @@
 <div class="col-md-6">
   <% if @photo.description.present? %>
     <div id="content-1" class="pmd-card pmd-card-default pmd-z-depth pmd-card-custom-form pmd-scrollbar mCustomScrollbar" style="max-height: 600px">
+      <div class="pmd-card-title">
+      <h3 class="pmd-card-title-text">Image labels</h3>
 	    <% @photo.description.each do |label| %>
       <div class="pmd-card-body">
         <!-- <p><%= label["name"] %> <%= label["confidence"].to_i %>%</p> -->
@@ -39,6 +46,7 @@
   	<% end %>
 
   <% end %>
+  </div>
 </div>
 </div>
 
@@ -54,3 +62,4 @@
 
 </script>
 
+</div>
