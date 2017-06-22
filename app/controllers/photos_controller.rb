@@ -13,10 +13,11 @@ class PhotosController < ApplicationController
     @photo = Photo.new(photo_params)
     if @photo.save
       respond_to do |format|
-        format.json{ render :json => @photo }
+        format.json{ render :json => @photo, :only => [:id] }
         format.html
         format.js
       end
+      @uploaded_photo = Photo.find(@photo.id)
        # flash[:success] = "You uploaded your photo!"
        # redirect_to @photo
     else

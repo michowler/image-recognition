@@ -26,7 +26,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   #process scale: [1184, 666]
   # process :process_original_version
   #
-  process :resize_to_limit => [640, 480] 
+  process resize_and_pad: [640, 480, background = :transparent, gravity = 'Center']
+  # process :resize_to_limit => [640, 480] 
   def scale(width, height)
     # do something
   end
