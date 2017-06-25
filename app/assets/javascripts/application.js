@@ -19,5 +19,6 @@
 //= require propeller.min
 //= require_tree .
 //= require jquery-ui
+//= require jquery.interactive_bg.js
 //= require dropzone
 //= require jquery.mCustomScrollbar

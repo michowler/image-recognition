@@ -59,7 +59,7 @@ class PhotosController < ApplicationController
     result = rekog.detect_labels({
       image: {
         s3_object: {
-        bucket: "jasmine-rekog",
+        bucket: "jasmine-rekoq",
         name: "uploads/photo/image/#{params[:photo_id]}/#{@photo.image_identifier}"
         },
       }
