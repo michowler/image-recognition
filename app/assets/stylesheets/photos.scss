@@ -1,20 +1,17 @@
-
-*{border-radius:0px; -moz-border-radius:0px; -webkit-border-radius:0px}
-
-
 .jumbotron h1 {
-  font-family: Permanent Marker, serif;
-  color: #5fba7d;
+  color:#2F4F4F;
+  font-family: 'Bahiana', cursive;
   font-size: 92px;
 }
 
 
 .jumbotron p {
   width: 850px;
-  margin-left: 190px;
+   color: grey;
+  font-family: 'Questrial', sans-serif;
   font-weight: 300;
-}
 
+}
 
 #photo-dropzone {
     border: 2px dashed #5fba7d;
@@ -135,3 +132,35 @@ background-color: #5fba7d;
 background-image: none;
 }
 
+.btn:hover {
+  -webkit-transform: scale(1.2);
+      -ms-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.btn-default {
+    box-shadow:0 0 0 1px #ebebeb inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #adadad, 0 8px 0 1px rgba(0,0,0,0.4), 0 8px 8px 1px rgba(0,0,0,0.5);
+    background-color:#fff;
+}
+
+ .btn-success {
+    box-shadow:0 0 0 1px #5cb85c inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #4cae4c, 0 8px 0 1px rgba(0,0,0,0.4), 0 8px 8px 1px rgba(0,0,0,0.5);
+    background-color:#5cb85c;
+}
+
+.btn3d {
+    transition:all .08s linear;
+    position:relative;
+    outline:medium none;
+    -moz-outline-style:none;
+    border:0px;
+    margin-right:10px;
+    margin-top:15px;
+}
+.btn3d:focus {
+    outline:medium none;
+    -moz-outline-style:none;
+}
+.btn3d:active {
+    top:9px;
+}

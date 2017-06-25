@@ -1,9 +1,16 @@
 @import "jquery-ui";
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "propeller.min";
 @import "jquery.mCustomScrollbar";
 @import "pmd-scrollbar";
 @import "photos";
 @import "dropzone/dropzone";
 
+body {
+	font-family: 'Questrial', sans-serif;
+}
+
+.page-header {
+	background-color:transparent;
+	width:100%;
+}

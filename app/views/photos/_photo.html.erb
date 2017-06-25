@@ -1,29 +1,29 @@
+<div class="col-sm-12 col-md-12 col-lg-12">
+
       <%= image_tag photo.image.url if photo.image %>
 
-<% rekog = Aws::Rekognition::Client.new(region: "us-west-2") %>
-  <% result = rekog.detect_labels({ %>
-    <%  image: { %>
-	  <% s3_object: { %>
-	    <% bucket: "jasmine-rekog", %>
-	      <% name: "uploads/photo/image/#{photo.id}/#{photo.image_identifier}" %>
-	  <% }, %>
-	<% } %>
-  <% }) %>
+      <% rekog = Aws::Rekognition::Client.new(region: "us-west-2") %>
+        <% result = rekog.detect_labels({ %>
+          <%  image: { %>
+          <% s3_object: { %>
+            <% bucket: "jasmine-rekog", %>
+              <% name: "uploads/photo/image/#{photo.id}/#{photo.image_identifier}" %>
+          <% }, %>
+        <% } %>
+        <% }) %>
 
-<% photo.description = result.labels %>
-<% photo.save %>
+      <% photo.description = result.labels %>
+      <% photo.save %>
 
-
- <div class="col-md-6">
   <% if photo.description %>
-    <div id="content-1" class="pmd-card pmd-card-default pmd-z-depth pmd-card-custom-form pmd-scrollbar mCustomScrollbar" style="max-height: 600px">
+    <div id="content-1" class="pmd-card pmd-card-default pmd-z-depth pmd-card-custom-form pmd-scrollbar mCustomScrollbar" style="max-height: 650px"><br>
       <div class="pmd-card-title">
-      <h3 class="pmd-card-title-text">Image labels</h3>
-	    <% photo.description.each do |label| %>
+      <h3 class="pmd-card-title-text">Image results:</h3>
+	    <% photo.description.each do |label| %><br>
       <div class="pmd-card-body">
         <!-- <p><%= label["name"] %> <%= label["confidence"].to_i %>%</p> -->
           <div class="progress">
-            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= label["confidence"].to_i %>" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar progress-bar-success progress-striped active" role="progressbar" aria-valuenow="<%= label["confidence"].to_i %>" aria-valuemin="0" aria-valuemax="100">
                <span class="label"><%= label["name"] %></span>
                <span class="val"><%= label["confidence"].to_i %>%</span>
             </div>
@@ -50,7 +50,7 @@
   (function($){
     $(window).load(function(){
       $(".pmd-card").mCustomScrollbar({
-        theme:"minimal",
+        theme:"rounded-dots-dark",
         scrollInertia:2000
       });
     });
