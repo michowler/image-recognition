@@ -164,3 +164,19 @@ background-image: none;
 .btn3d:active {
     top:9px;
 }
+
+#myProgress {
+  margin: 0 0 0 110px;
+  text-align:center;
+  float:center;
+  width: 80%;
+  background-color: #ddd;
+}
+
+#myBar {
+  height: 30px;
+  background-color: #4CAF50;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+}
