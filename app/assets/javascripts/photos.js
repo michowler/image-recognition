@@ -40,17 +40,3 @@ $(window).resize(function() {
   })
 })
 
-$.ajax({
-url: path,
-xhrFields: {
-onprogress: function (e) {
-if (e.lengthComputable) {
-console.log(e.loaded / e.total * 100 + '%');
-}
-}
-},
-success: function (response) {
-    console.log('Data: %O', data);
-
-}
-});

@@ -11,4 +11,5 @@ require 'carrierwave/orm/activerecord'
  	  :region => 'us-west-2'  
   }
   config.fog_directory  = ENV['S3_BUCKET_NAME'] 
+
   end  

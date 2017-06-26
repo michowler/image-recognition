@@ -1,5 +1,5 @@
 <div class="col-sm-12 col-md-12 col-lg-12" style="text-align: center;float:center;">
-
+  <h2>Your results are out!</h2>
       <%= image_tag photo.image.url(:thumb) if photo.image %>
 
       <% rekog = Aws::Rekognition::Client.new(region: "us-west-2") %>
