@@ -16,7 +16,7 @@
       <% photo.save %>
 
   <% if photo.description %>
-    <div id="content-1" class="pmd-card pmd-card-default pmd-z-depth pmd-card-custom-form pmd-scrollbar mCustomScrollbar" style="max-height: 650px;padding-bottom: 80px;"><br>
+    <div id="content-1" class="pmd-card pmd-card-default pmd-z-depth pmd-card-custom-form" style="padding-bottom: 50px;"><br>
       <div class="pmd-card-title">
       <h3 class="pmd-card-title-text">Image results:</h3>
 	    <% photo.description.each do |label| %><br>
@@ -24,7 +24,7 @@
         <!-- <p><%= label["name"] %> <%= label["confidence"].to_i %>%</p> -->
           <div class="progress">
             <div class="progress-bar progress-bar-success progress-striped active" role="progressbar" aria-valuenow="<%= label["confidence"].to_i %>" aria-valuemin="0" aria-valuemax="100">
-               <span class="label"><%= label["name"] %></span>
+               <span class="label" style="font-family: 'Questrial', sans-serif;"><%= label["name"] %></span>
                <span class="val"><%= label["confidence"].to_i %>%</span>
             </div>
           </div>
