@@ -1,6 +1,6 @@
-<div class="col-sm-12 col-md-12 col-lg-12">
+<div class="col-sm-12 col-md-12 col-lg-12" style="text-align: center;float:center;">
 
-      <%= image_tag photo.image.url if photo.image %>
+      <%= image_tag photo.image.url(:thumb) if photo.image %>
 
       <% rekog = Aws::Rekognition::Client.new(region: "us-west-2") %>
         <% result = rekog.detect_labels({ %>
@@ -16,7 +16,7 @@
       <% photo.save %>
 
   <% if photo.description %>
-    <div id="content-1" class="pmd-card pmd-card-default pmd-z-depth pmd-card-custom-form pmd-scrollbar mCustomScrollbar" style="max-height: 650px"><br>
+    <div id="content-1" class="pmd-card pmd-card-default pmd-z-depth pmd-card-custom-form pmd-scrollbar mCustomScrollbar" style="max-height: 650px;padding-bottom: 80px;"><br>
       <div class="pmd-card-title">
       <h3 class="pmd-card-title-text">Image results:</h3>
 	    <% photo.description.each do |label| %><br>
@@ -41,7 +41,8 @@
      </div>
     <% end %>
 
-
+    <p> Go ahead and upload something else or share this with your friends!</p>
+    <div class="fb-share-button" data-href="https://imingle.herokuapp.com" data-layout="box_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://imingle.herokuapp.com">Share</a></div>
   <% end %>
   </div>
 </div>

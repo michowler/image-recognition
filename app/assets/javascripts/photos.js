@@ -7,7 +7,7 @@ $(function(){
 
     images_list.on('ajax:success', function(e, data, status, xhr) {
         console.log('Data: %O', data);
-        ('ajax:success').append('#analyze');
+        
     });
 
 });
@@ -24,3 +24,18 @@ $(window).resize(function() {
     height: $(window).outerHeight()
   })
 })
+
+$.ajax({
+url: path,
+xhrFields: {
+onprogress: function (e) {
+if (e.lengthComputable) {
+console.log(e.loaded / e.total * 100 + '%');
+}
+}
+},
+success: function (response) {
+    console.log('Data: %O', data);
+
+}
+});
