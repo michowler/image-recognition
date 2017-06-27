@@ -3,5 +3,5 @@ var images_list = $('#images-list');
 <% if @photo.save %>
 images_list.append('<%= j (render partial: @photo) %>'); 
 <% else %>
-images_list.html('<%= j (flash_messages)%>').fadeOut(5500);
+images_list.html('<%= j (flash_messages)%>').fadeOut(8500);
 <% end%>
