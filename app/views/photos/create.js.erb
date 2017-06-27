@@ -1,7 +1,7 @@
 var images_list = $('#images-list');
-var main_header = $('#main-header');
+
 <% if @photo.save %>
 images_list.append('<%= j (render partial: @photo) %>'); 
 <% else %>
-images_list.html('<%= j (flash_messages)%>');
+images_list.html('<%= j (flash_messages)%>').fadeOut(5500);
 <% end%>
