@@ -30,7 +30,7 @@ class PhotosController < ApplicationController
     else
       respond_to do |format|
         format.json { render json: { error: 'Failed to process' } }
-        format.js { flash[:error] = "Please upload valid file to process. Ex: png, jpeg, jpg" }
+        format.js { flash.now[:error] = "Please upload valid file to process. Ex: png, jpeg, jpg" }
       end
       #flash[:error] = "Something's wrong. Please try again."
       # render 'page/index'
